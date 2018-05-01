@@ -1,0 +1,12 @@
+      <div class="center jumbotron">
+  <h1>Gossip d'un auteur que j'ai gardé anonyme</h1>
+  <h3>
+    <em><%= @gossip.content %></em>
+  </h3>
+  
+  <a class="btn btn-lg btn-primary" href="<%= edit_gossip_path%>">Editer</a>
+  <%= link_to 'Supprimer', @gossip, method: :delete, class:"btn btn-lg btn-danger" %>
+  <a class="btn btn-lg btn-success" href="/gossips">Retour à la liste</a>
+</div>
+
+<h2>Les commentaires: </h2>

@@ -1,0 +1,24 @@
+<% if @message %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Erreur</strong> <%= @message %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% end %>
+<h1 class="text-center">Veuillez remplir le formulaire!</h1>
+
+<div class="bg-light shadow mt-5 p-5 offset-lg-2 col-lg-8">
+  <form action="/gossips" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <label for="username">Author</label>
+      <input type="text" class="form-control" id="username" name="auteur" placeholder="Nom de l'auteur">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Content</label>
+      <textarea class="form-control" name="content" id="bio" placeholder="Bla Bla Bla Bla"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </form>
+</div>
