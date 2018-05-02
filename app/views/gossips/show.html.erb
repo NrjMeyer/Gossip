@@ -5,8 +5,47 @@
   </h3>
   
   <a class="btn btn-lg btn-primary" href="<%= edit_gossip_path%>">Editer</a>
-  <%= link_to 'Supprimer', @gossip, method: :delete, class:"btn btn-lg btn-danger" %>
+  <%= link_to 'Supprimer', @gossip, method: :delete, data:{confirm: "Vous êtes sure?"}, class:"btn btn-lg btn-danger"  %>
   <a class="btn btn-lg btn-success" href="/gossips">Retour à la liste</a>
 </div>
 
 <h2>Les commentaires: </h2>
+
+<div class='row'>
+<div class="bg-light mt-1 p-5 col-lg-8">
+    <table class="table table-hover table-dark-ligth">
+  <thead>
+    <tr>
+      <th scope="col"><span class="fi-media-play"></span>#</th>
+      <th scope="col">Fake commentor</th>
+      <th scope="col">Comment</th>
+    </tr>
+  </thead>
+<% @gossip.comments.each do |comment| %>
+    
+    <tbody>
+      <th scope="row"><%= comment.id%></th>
+      <td><%= comment.anonymous_commentor%></td>
+      <td><%= comment.body%></td>
+      <td><a class="btn btn-md btn-warning" href="<%= edit_gossip_comment_path(@gossip.id,comment.id) %>"> edit</a></td>
+    </tbody>
+<% end %>
+    </table>
+  </div>
+
+
+<div class= "bg-light shadow mt-1 p-5 col-lg-4" >
+  <h3>Ajouter une comment</h3>
+<%= form_tag gossip_comments_path(@gossip), method: :post do %>
+
+<%= label_tag 'anonymous_author', 'Commentataire:' %></br>
+  <input type="text" class="form-control" id="anonymous_author" name="anonymous_author" placeholder="Entrer un nom"><br>
+ 
+  <%= label_tag 'content', 'Votre commentaire:' %></br>
+  <textarea class="form-control" name="body" id="body" placeholder="Ouvrer votre coeur"></textarea>
+ 
+  <button type="submit" class="btn btn-primary">Commenter</button>
+
+<% end %>
+</div>
+</div>

@@ -1,0 +1,14 @@
+<div class= "bg-light shadow mt-1 p-5 col-lg-4" >
+  <h3>Modifier ou supprimer</h3>
+<%= form_tag gossip_comment_path(@gossip.id,@comment.id), method: :put do %>
+
+<%= label_tag 'anonymous_author', 'Commentataire:' %></br>
+  <input type="text" class="form-control" id="anonymous_author" name="anonymous_author" placeholder="Entrer un nom"><br>
+ 
+  <%= label_tag 'content', 'Votre commentaire:' %></br>
+  <textarea class="form-control" name="body" id="body" placeholder="Ouvrer votre coeur"></textarea><br>
+ 
+  <button type="submit" class="btn btn-dark">Modifier</button>  
+  <%= link_to 'Supprimer', gossip_comment_path(@comment.gossip_id,@comment.id), method: :delete, class:"btn btn-danger" %>
+<% end %>
+</div>

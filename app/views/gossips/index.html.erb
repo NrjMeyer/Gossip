@@ -8,7 +8,8 @@
     <tr>
       <th scope="col"><span class="fi-media-play"></span></th>
       <th scope="col">Content</th>
-      <th scope="col"><a class="btn btn-md btn-success" href="<%= new_gossip_path%>">ajouter</a></th>
+      <th>Details</th>
+      <th scope="col"><a class="btn btn-md btn-success" href="<%= new_gossip_path%>">Ajouter</a></th>
     </tr>
   </thead>
 <% @gossips.each do |gossip| %>
@@ -16,7 +17,9 @@
     <tbody>
       <th scope="row"><%= gossip.id%></th>
       <td><%= gossip.content%></td>
-      <td><a class="btn btn-md btn-primary" href="gossips/<%= gossip.id%>"> view</a></td>
+      <td><button type="button" class="btn btn-xl btn-ligth">
+  Comment <span class="badge badge-dark"><%= gossip.comments.count%></span>
+</button><a class="btn btn-md btn-primary" href="gossips/<%= gossip.id%>"> view</a></td>
     </tbody>
 <% end %>
     </table>
